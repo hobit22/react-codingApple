@@ -6,6 +6,7 @@ import './App.css';
 function App() {
   let [title, titleFunction] = useState(["남자 코트 추천", "강남 우동 맛집", "파이썬 독학"]);
   let [따봉, 따봉변경] = useState(0);
+  let [modal, setModal] = useState(false);
   function 글변경(){
     var newArray = [...title]; // deep copy // 리액트 대 원칙 
     newArray[0] = "여자 코트 추천"
@@ -29,11 +30,13 @@ function App() {
         <hr/>
       </div>
       <div className='list'>
-        <h2>{ title[2] }</h2>
+        <h2 onClick={()=>{setModal(true)}}>{ title[2] }</h2>
         <p>2월 17일 발행</p>
         <hr/>
       </div>
-      <Modal></Modal>
+      {
+        modal == true ? <Modal/> : null
+      }
     </div>
   );
 }
